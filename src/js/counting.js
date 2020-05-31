@@ -5,18 +5,45 @@ const e = React.createElement;
 class Counting extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { liked: false };
+    this.state = {
+      value: 1,
+    };
+  }
+
+  handleInputChange(event) {
+    this.setState({ value: +event.target.value });
   }
 
   render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
+    return (
+      <div className="container">
+        <div className="row">
+          <input
+            className="small-12 columns input"
+            type="number"
+            name="number"
+            value={this.state.value}
+            onChange={this.handleInputChange.bind(this)}
+          />
+        </div>
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
+        <div className="row">
+          <button
+            className={"small-5 columns button large round"}
+            onClick={() => {
+              const newValue = this.state.value - 1;
+              if (newValue >= 0) {
+                this.setState({ value: newValue })};
+              }
+            }
+          >-1</button>
+
+          <button
+            className={"small-5 columns button large round"}
+            onClick={() => this.setState({ value: this.state.value + 1 })}
+          >+1</button>
+        </div>
+      </div>
     );
   }
 }

@@ -1,0 +1,15 @@
+#counting input {
+  border: none;
+  box-shadow: none;
+  font-size: 6rem;
+  height: 10rem;
+  text-align: center;
+}
+
+button:focus {
+  outline: none;
+}
+
+.vertical-space {
+  height: 3rem;
+}
