@@ -11,7 +11,8 @@ class Counting extends React.Component {
   }
 
   handleInputChange(event) {
-    this.setState({ value: +event.target.value });
+    const value = event.target.value;
+    this.setState({ value });
   }
 
   render() {
@@ -31,7 +32,7 @@ class Counting extends React.Component {
           <button
             className={"small-5 columns button large round"}
             onClick={() => {
-              const newValue = this.state.value - 1;
+              const newValue = +this.state.value - 1;
               if (newValue >= 0) {
                 this.setState({ value: newValue })};
               }
@@ -40,7 +41,7 @@ class Counting extends React.Component {
 
           <button
             className={"small-5 columns button large round"}
-            onClick={() => this.setState({ value: this.state.value + 1 })}
+            onClick={() => this.setState({ value: +this.state.value + 1 })}
           >+1</button>
         </div>
       </div>
